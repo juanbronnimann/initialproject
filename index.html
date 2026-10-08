@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="src/assets/icons/juan1.jfif">
+    <link rel="stylesheet" href="style.css">
+    <title>Juan1.</title>
+    <style>
+      html,
+      body {
+        min-height: 100%;
+        background-color: #000;
+        color: #fff;
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      header {
+        text-align: center;
+      }
+
+      h1 {
+        color: red;
+      }
+
+      hr {
+        border: 0;
+        border-top: 1px solid #fff;
+      }
+
+      .books {
+        padding: 24px 16px;
+        text-align: center;
+      }
+
+      .book-card {
+        max-width: 300px;
+        margin: 24px auto;
+        padding: 20px;
+        border: 1px solid #444;
+        border-radius: 10px;
+        background-color: #171717;
+      }
+
+      .book-card img {
+        display: block;
+        width: 100%;
+        height: 320px;
+        margin-bottom: 16px;
+        border-radius: 6px;
+        object-fit: cover;
+      }
+
+      .buy-button {
+        padding: 10px 24px;
+        border: 0;
+        border-radius: 6px;
+        background-color: #168a3e;
+        color: #fff;
+        font: inherit;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <h1>Juan1.</h1>
+    <p>Visite e conheça a biblioteca virtual de livros e artigos.</p>
+  </header>
+  <hr>
+  <main>
+    <section class="books">
+      <h2>Encontre livros para aprender e estudar Tecnologia da Informação em grande catálogo</h2>
+      <article class="book-card">
+        <img src="src/assets/livros/computacao-grafica.webp" alt="Capa do livro Computação Gráfica: Teoria e Prática, Análise de Imagens, volume 2">
+        <h3>Computação gráfica e boas práticas.</h3>
+        <p>Livro sobre teoria e prática de análise de imagens e computação gráfica.</p>
+        <button class="buy-button" type="button">Adquirir grátis</button>
+      </article>
+    </section>
+    <section class="books">
+      <article class="book-card">
+        <img src="src/assets/livros/computacao-grafica.webp" alt="Capa do livro Computação Gráfica: Teoria e Prática, Análise de Imagens, volume 2">
+        <h3>Programação.</h3>
+        <p>Livro sobre teoria e prática de análise de imagens e computação gráfica.</p>
+        <button class="buy-button" type="button">Adquirir grátis</button>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
