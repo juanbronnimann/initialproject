@@ -1,6 +1,6 @@
 const books = {
   "computacao-grafica": {
-    title: "Computação Gráfica: Teoria e Prática — Análise de Imagens, Vol. 2",
+    title: "Computação gráfica e boas práticas.",
     file: "../assets/images/Guia da Computacao em Nuvem.pdf",
     filename: "Guia-da-Computacao-em-Nuvem.pdf",
   },
@@ -21,7 +21,7 @@ if (form) {
 
   if (selectedBook?.file) {
     title.textContent = selectedBook.title;
-    status.textContent = `PDF disponível: ${selectedBook.filename}. Seus dados não serão enviados nem armazenados.`;
+    status.textContent = "";
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
