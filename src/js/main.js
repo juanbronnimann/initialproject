@@ -1,6 +1,8 @@
 const books = {
   "computacao-grafica": {
     title: "Computação Gráfica: Teoria e Prática — Análise de Imagens, Vol. 2",
+    file: "../assets/images/Guia da Computacao em Nuvem.pdf",
+    filename: "Guia-da-Computacao-em-Nuvem.pdf",
   },
   algoritmos: {
     title: "Algoritmos e Programação",
@@ -15,13 +17,11 @@ if (form) {
   const selectedBook = books[new URLSearchParams(window.location.search).get("livro")];
   const title = document.querySelector("#book-title");
   const status = document.querySelector("#status");
-  const downloadButton = document.querySelector("#download-button");
   const downloadLink = document.querySelector("#download-link");
 
   if (selectedBook?.file) {
     title.textContent = selectedBook.title;
-    status.textContent = "Seus dados não serão enviados nem armazenados.";
-    downloadButton.disabled = false;
+    status.textContent = `PDF disponível: ${selectedBook.filename}. Seus dados não serão enviados nem armazenados.`;
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -34,7 +34,7 @@ if (form) {
       downloadLink.download = selectedBook.filename;
       downloadLink.hidden = false;
       downloadLink.click();
-      status.textContent = "Download iniciado. Se não começou, use o link abaixo.";
+      status.textContent = `Download de ${selectedBook.filename} iniciado. Se não começou, use o link abaixo.`;
     });
   } else if (selectedBook) {
     title.textContent = selectedBook.title;
