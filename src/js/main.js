@@ -12,35 +12,28 @@ const books = {
 };
 
 const form = document.querySelector("#download-form");
-
 if (form) {
-  const selectedBook = books[new URLSearchParams(window.location.search).get("livro")];
-  const title = document.querySelector("#book-title");
-  const status = document.querySelector("#status");
-  const downloadLink = document.querySelector("#download-link");
+  const bookKey = new URLSearchParams(window.location.search).get("livro");
+  const book = books[bookKey];
+  const titleEl = document.querySelector("#book-title");
+  const statusEl = document.querySelector("#status");
+  const linkEl = document.querySelector("#download-link");
 
-  if (selectedBook?.file) {
-    title.textContent = selectedBook.title;
-    status.textContent = "";
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      if (!form.reportValidity()) {
-        return;
-      }
-
-      downloadLink.href = selectedBook.file;
-      downloadLink.download = selectedBook.filename;
-      downloadLink.hidden = false;
-      downloadLink.click();
-      status.textContent = `Download de ${selectedBook.filename} iniciado. Se não começou, use o link abaixo.`;
-    });
-  } else if (selectedBook) {
-    title.textContent = selectedBook.title;
-    status.textContent = "O PDF correto deste livro ainda não foi adicionado ao projeto.";
+  titleEl.textContent = book?.title ?? "Livro indisponível";
+  
+  if (!book) {
+    statusEl.textContent = "Não foi possível identificar o livro. Volte à página inicial e tente novamente.";
+  } else if (!book.file) {
+    statusEl.textContent = "O PDF correto deste livro ainda não foi adicionado ao projeto.";
   } else {
-    title.textContent = "Livro indisponível";
-    status.textContent = "Não foi possível identificar o livro. Volte à página inicial e tente novamente.";
+    statusEl.textContent = "";
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      Object.assign(linkEl, { href: book.file, download: book.filename, hidden: false });
+      linkEl.click();
+      statusEl.textContent = `Download de ${book.filename} iniciado. Se não começou, use o link abaixo.`;
+    });
   }
 }
